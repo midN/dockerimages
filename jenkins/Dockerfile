@@ -3,6 +3,10 @@ MAINTAINER Andres Ivanov <andres@andres.wtf>
 
 USER root
 
+# Set correct timezone
+ENV TZ=Europe/Tallinn
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN apt-get update && \
                apt-get -y --no-install-recommends install python-yaml \
                python-jinja2 python-httplib2 python-keyczar \
