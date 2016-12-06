@@ -24,6 +24,7 @@ RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 581
 # Ansible
 RUN mkdir -p /etc/ansible/
 RUN pip install ansible boto boto3 awscli
+RUN pip install --upgrade jinja2
 
 # Oracle JDK
 ENV VERSION 8
