@@ -14,7 +14,10 @@ RUN apt-get update && \
                python-pkg-resources git python-pip vim \
                apt-transport-https ca-certificates curl \
                gcc libc6-dev libssl-dev make postgresql-client libpq-dev \
-               python-dev
+               python-dev sudo
+
+RUN adduser jenkins sudo
+RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" | (EDITOR="tee -a" visudo)
 
 # Docker
 COPY docker.list /etc/apt/sources.list.d/docker.list
