@@ -7,14 +7,16 @@ USER root
 ENV TZ=Europe/Tallinn
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+RUN echo "deb http://cz.archive.ubuntu.com/ubuntu trusty main" >> /etc/apt/sources.list
 RUN apt-get update && \
-               apt-get -y --no-install-recommends install python-yaml \
+               apt-get -y --no-install-recommends --allow-unauthenticated install \
+               python-yaml \
                python-jinja2 python-httplib2 python-keyczar \
                python-paramiko python-setuptools \
                python-pkg-resources git python-pip vim \
                apt-transport-https ca-certificates curl \
                gcc libc6-dev libssl-dev make postgresql-client libpq-dev \
-               python-dev sudo
+               python-dev sudo libsystemd-journal0
 
 RUN adduser jenkins sudo
 RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" | (EDITOR="tee -a" visudo)
