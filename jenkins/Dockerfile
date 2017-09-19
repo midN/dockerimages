@@ -21,6 +21,10 @@ RUN apt-get update && \
 RUN adduser jenkins sudo
 RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" | (EDITOR="tee -a" visudo)
 
+# Allow GPG to use passphrase
+RUN echo "use-agent" >> /var/jenkins_home/.gnupg/gpg.conf
+RUN echo "pinentry-mode loopback" >> /var/jenkins_home/.gnupg/gpg.conf
+
 # Docker
 COPY docker.list /etc/apt/sources.list.d/docker.list
 RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
