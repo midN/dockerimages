@@ -62,7 +62,7 @@ RUN curl --silent --location --retry 3 --cacert /etc/ssl/certs/GeoTrust_Global_C
 RUN wget https://github.com/midN/jira-cloud-backuper/releases/download/v1.1/v1.1_linux.zip && unzip v1.1_linux.zip -d /usr/local/bin
 
 # Database backuper
-RUN wget https://github.com/deskrock/postgres_backuper/releases/download/v1/postgres_backuper_v1.zip && unzip postgres_backuper_v1.zip -d /usr/local/bin
+RUN wget https://github.com/deskrock/postgres_backuper/releases/download/v1.2/latest.zip && unzip latest.zip -d /usr/local/bin
 
 RUN usermod -aG docker jenkins
 
